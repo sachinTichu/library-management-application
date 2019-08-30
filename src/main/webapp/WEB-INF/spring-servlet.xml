@@ -30,6 +30,7 @@
         <beans:property name="annotatedClasses">
             <beans:list>
                 <beans:value>com.lbm.app.model.Account</beans:value>
+                <beans:value>com.lbm.app.model.Book</beans:value>
             </beans:list>
         </beans:property>
         <beans:property name="hibernateProperties">
@@ -47,6 +48,13 @@
     </beans:bean>
     <beans:bean id="accService" class="com.lbm.app.service.AccountServiceImpl">
         <beans:property name="accountDao" ref="accountDao"></beans:property>
+    </beans:bean>
+
+    <beans:bean id="bookDao" class="com.lbm.app.dao.BookDaoImpl">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    <beans:bean id="bookService" class="com.lbm.app.service.BookServiceImpl">
+        <beans:property name="bookDao" ref="bookDao"></beans:property>
     </beans:bean>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
